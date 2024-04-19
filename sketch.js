@@ -1,4 +1,9 @@
+import fetchComments from "./comments";
+
 let sentiment;
+const commentBodies = fetchComments();
+let prediction;
+let clasifiedComments = [];
 
 function setup() {
   sentiment = ml5.sentiment('movieReviews', modelReady);
@@ -7,7 +12,12 @@ function setup() {
 function modelReady() {
   console.log('Model Loaded!');
   
-  const text = "I love this movie!";
-  const prediction = sentiment.predict(text);
-  console.log(prediction);
+  for (const comment of commentBodies) {
+    prediction = sentiment.predict(comment);
+    clasifiedComments.push({
+      text: comment,
+      prediction: prediction
+    });
+    console.log(prediction);
+  }
 }
