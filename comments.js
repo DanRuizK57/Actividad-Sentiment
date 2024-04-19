@@ -1,13 +1,18 @@
 
-let commentBodies;
+import fetch from 'node-fetch';
 
-fetch('https://dummyjson.com/comments')
-    .then(response => response.json())
-    .then(data => {
+const fetchComments = async () => {
+    try {
+        const response = await fetch('https://dummyjson.com/comments');
+        const data = await response.json();
         const comments = data.comments;
-        commentBodies = comments.map(comment => comment.body);
+        const commentBodies = comments.map(comment => comment.body);
         console.log(commentBodies);
-    })
-    .catch(error => console.error('Error fetching data:', error));
+        return commentBodies;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-module.exports = commentBodies;
+export default fetchComments;
