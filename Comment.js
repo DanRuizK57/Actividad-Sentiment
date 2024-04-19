@@ -1,12 +1,19 @@
 
 import fetch from 'node-fetch';
+class Comment {
 
-const fetchComments = async () => {
+    constructor (){
+        this.comments
+        this.commentBodies
+    };
+
+    async fetchComments () {
     try {
         const response = await fetch('https://dummyjson.com/comments');
         const data = await response.json();
-        const comments = data.comments;
-        const commentBodies = comments.map(comment => comment.body);
+        comments = data.comments;
+        console.log("paso");
+        commentBodies = comments.map(comment => comment.body);
         console.log(commentBodies);
         return commentBodies;
     } catch (error) {
@@ -15,4 +22,5 @@ const fetchComments = async () => {
     }
 };
 
-export default fetchComments;
+
+}
