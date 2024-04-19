@@ -6,3 +6,18 @@ html, body {
 canvas {
   display: block;
 }
+/* Estilos del recuadro */
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  transition: transform 0.3s ease;
+  /* Agregar efecto de sombra */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto de hover */
+.box:hover {
+  background-color: red; /* Cambiar color al pasar el mouse */
+}
