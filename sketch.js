@@ -1,7 +1,13 @@
+let sentiment;
+
 function setup() {
-  createCanvas(400, 400);
+  sentiment = ml5.sentiment('movieReviews', modelReady);
 }
 
-function draw() {
-  background(220);
+function modelReady() {
+  console.log('Model Loaded!');
+  
+  const text = "I love this movie!";
+  const prediction = sentiment.predict(text);
+  console.log(prediction);
 }
