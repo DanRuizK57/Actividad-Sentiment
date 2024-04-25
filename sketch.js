@@ -47,6 +47,7 @@ async function createBoxes(classifiedComments, container) {
       div.classList.add('hover-effect');
     } else if (classifiedComment.prediction < 0.5) {
       //div.style.backgroundColor = '#FF5722';
+
       div.classList.add('hover-effect-dos');
     }
 
